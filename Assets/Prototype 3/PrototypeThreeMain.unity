@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9deef5d9c48aa3c4c8eb84eef903da95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
+  rotationSpeed: 50
 --- !u!58 &553278411
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9deef5d9c48aa3c4c8eb84eef903da95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
+  rotationSpeed: 100
 --- !u!58 &1226835184
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9deef5d9c48aa3c4c8eb84eef903da95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
+  rotationSpeed: 80
 --- !u!58 &2067563131
 CircleCollider2D:
   m_ObjectHideFlags: 0
