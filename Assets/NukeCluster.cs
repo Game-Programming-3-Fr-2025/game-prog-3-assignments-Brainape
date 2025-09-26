@@ -14,7 +14,7 @@ public class NukeCluster : MonoBehaviour
     private Camera mainCamera;
 
     private List<LaserShooter> playersInside = new List<LaserShooter>();
-    private HashSet<GameObject> enemiesInside = new HashSet<GameObject>(); 
+    private HashSet<GameObject> enemiesInside = new HashSet<GameObject>();  
     private float radiationAccumulator = 0f;
 
     private void Start()
