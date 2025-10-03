@@ -101,6 +101,8 @@ public class StationaryProjectile : MonoBehaviour
 
     private void TriggerExpansion()
     {
+        FeedbacksManager.Instance.Play("ImpactFeedback", transform.position);
+
         isTriggered = true;
         expansionTimer = 0f;
         damageTimer = 0f;

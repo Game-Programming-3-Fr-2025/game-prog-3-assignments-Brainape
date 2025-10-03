@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using MoreMountains.Feedbacks;
 public class IsometricPlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
@@ -17,6 +18,7 @@ public class IsometricPlayerController : MonoBehaviour
     private float baseY; 
     public Health health;
     public TextMeshProUGUI healthBar;
+   
 
     public bool IsInvulnerable { get; private set; }
 
@@ -97,6 +99,8 @@ public class IsometricPlayerController : MonoBehaviour
         isJumping = true;
         jumpTimer = 0f;
         IsInvulnerable = true;
+        FeedbacksManager.Instance.Play("JumpEffect", transform.position);
+
     }
 
     void UpdateJump()
@@ -120,6 +124,7 @@ public class IsometricPlayerController : MonoBehaviour
             currentJumpOffset = 0f;
             isJumping = false;
             IsInvulnerable = false;
+            FeedbacksManager.Instance.Play("LandEffect", transform.position);
         }
     }
 }

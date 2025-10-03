@@ -84,6 +84,8 @@ public class EnemyAI : MonoBehaviour
                 if (targetHealth != null)
                 {
                     targetHealth.TakeDamage(attackDamage);
+                    FeedbacksManager.Instance.Play("DamageFeedback", transform.position);
+
                 }
                 lastAttackTime = Time.time;
             }

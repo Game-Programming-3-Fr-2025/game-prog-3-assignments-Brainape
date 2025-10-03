@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Prototype 4/3dScene 2.unity
+    guid: 22466fa33fcf18d4eb63231560748b15
   - enabled: 1
     path: Assets/MainMenu.unity
     guid: 27c5d1fe29d8e4227b3ddc4a64e05482
@@ -18,11 +21,11 @@ EditorBuildSettings:
     path: Assets/Prototype 3/PrototypeThreeMain.unity
     guid: 214245533f3e84d04b8269391b42f7df
   - enabled: 1
-    path: Assets/Prototype 4/PrototypeFourMain.unity
-    guid: 78a5c91cc3b964098b05a9514aae7cc1
+    path: Assets/Prototype 4/3dScene.unity
+    guid: 134eb5c5df079cc4caed368b805cdd05
   - enabled: 1
-    path: Assets/Prototype 5/PrototypeFiveMain.unity
-    guid: 0ee46fc9f6f294c94a5324b6b66233b9
+    path: Assets/Prototype 5/PrototypeTaiFIve.unity
+    guid: cb4e7250d5ea2dc4d9e70176733723a3
   - enabled: 1
     path: Assets/Prototype 6/PrototypeSixMain.unity
     guid: 2acce0291c11b4b3897e2ca7989e28c3

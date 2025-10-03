@@ -23,6 +23,8 @@ public class PlayerProjectile : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage, owner, true); // true = apply knockback
+            //FeedbacksManager.Instance.Play("ImpactFeedback", transform.position);
+
             Destroy(gameObject);
             return;
         }

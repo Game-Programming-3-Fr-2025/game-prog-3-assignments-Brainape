@@ -70,6 +70,8 @@ public class NukeCluster : MonoBehaviour
                 {
                     if (player.GetNukeReserves() < player.GetMaxNukeReserves())
                     {
+                        FeedbacksManager.Instance.Play("AbsorbFeedback", transform.position);
+
                         player.AddNukeReserves(amountToGive);
                         clusterRadiation -= amountToGive;
                     }

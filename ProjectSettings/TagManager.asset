@@ -11,6 +11,9 @@ TagManager:
   - Harvester
   - NukeCluster
   - Enemy
+  - Death
+  - Ammo
+  - Pin
   layers:
   - Default
   - TransparentFX
