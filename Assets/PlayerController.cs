@@ -9,16 +9,14 @@ public class PlayerController : MonoBehaviour
     public float bottomGravity = -1f;
     public float jumpForce = 10f;
     public float jumpCooldown = 0.5f;
-
-    [Header("Respawn Settings")]
-    public Transform startPosition; // Set this in the Inspector
+    public Transform startPosition; 
 
     private Rigidbody2D rb;
     private float lastJumpTime = -Mathf.Infinity;
 
     private int jumpCount = 0;
     private int maxJumps = 1;
-    public PlatformShooter platformShooter; // Assign in Inspector
+    public PlatformShooter platformShooter; 
 
     void Start()
     {
@@ -79,13 +77,10 @@ public class PlayerController : MonoBehaviour
         if (startPosition != null)
         {
             transform.position = startPosition.position;
-            rb.linearVelocity = Vector2.zero; // stop leftover momentum
+            rb.linearVelocity = Vector2.zero;
             platformShooter.ammo -= 1;
         }
-        else
-        {
-            Debug.LogWarning("StartPosition not assigned on PlayerController!");
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -94,9 +89,9 @@ public class PlayerController : MonoBehaviour
         {
             if (platformShooter != null)
             {
-                platformShooter.AddAmmo(2); // give 2 ammo
+                platformShooter.AddAmmo(2); 
             }
-            Destroy(other.gameObject); // remove the pickup
+            Destroy(other.gameObject); 
         }
     }
 }

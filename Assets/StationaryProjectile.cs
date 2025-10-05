@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class StationaryProjectile : MonoBehaviour
 {
-    [Header("Stationary Settings")]
     [SerializeField] private int initialDamage = 20;          // damage when first triggered
     [SerializeField] private int expansionDamage = 1;         // damage per tick while expanding
     [SerializeField] private float expansionTime = 1.5f;      // time to fully expand
@@ -35,7 +34,6 @@ public class StationaryProjectile : MonoBehaviour
 
     private void Update()
     {
-        // Update lifetime
         lifeTimer += Time.deltaTime;
         if (lifeTimer >= lifetime)
         {
@@ -46,12 +44,10 @@ public class StationaryProjectile : MonoBehaviour
 
         if (!isTriggered) return;
 
-        // Expand the projectile
         expansionTimer += Time.deltaTime;
         float t = Mathf.Clamp01(expansionTimer / expansionTime);
         transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
 
-        // Apply damage to enemies inside during expansion
         damageTimer += Time.deltaTime;
         if (damageTimer >= damageTickInterval)
         {
@@ -59,7 +55,6 @@ public class StationaryProjectile : MonoBehaviour
             damageTimer = 0f;
         }
 
-        // Destroy after fully expanded
         if (t >= 1f)
         {
             TryRefundEnergy();
@@ -69,7 +64,7 @@ public class StationaryProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (owner != null && other.transform == owner) return; // ignore owner
+        if (owner != null && other.transform == owner) return;
         if (isTriggered) return;
 
         bool hitSomething = false;
@@ -77,7 +72,7 @@ public class StationaryProjectile : MonoBehaviour
         var enemy = other.GetComponent<EnemyAI>();
         if (enemy != null)
         {
-            enemy.TakeDamage(initialDamage, owner, false); // false = no knockback
+            enemy.TakeDamage(initialDamage, owner, false);
             hitSomething = true;
         }
 

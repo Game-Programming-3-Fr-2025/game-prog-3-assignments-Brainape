@@ -5,20 +5,15 @@ public class EnemyAI : MonoBehaviour
 {
     private enum TargetType { Harvester, Player }
 
-    [Header("References")]
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Transform player;  // Assign in inspector or find by tag
+    [SerializeField] private Transform player; 
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float turnSpeed = 360f;
-
-    [Header("Attack Settings")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private int attackDamage = 5;
-
-    [Header("Knockback Settings")]
-    [SerializeField] private float knockbackForce = 5f; // configurable knockback strength
-    [SerializeField] private float knockbackStopThreshold = 0.1f; // below this, end knockback
+    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackStopThreshold = 0.1f; 
     private bool isKnockback = false;
 
     private TargetType currentTargetType = TargetType.Harvester;
@@ -40,15 +35,14 @@ public class EnemyAI : MonoBehaviour
     {
         if (isKnockback)
         {
-            // Check if knockback velocity is almost zero
             Vector3 horizontalVelocity = rb.linearVelocity;
             horizontalVelocity.y = 0;
             if (horizontalVelocity.magnitude <= knockbackStopThreshold)
             {
                 isKnockback = false;
-                rb.linearVelocity = Vector3.zero; // reset residual force
+                rb.linearVelocity = Vector3.zero;
             }
-            return; // skip normal movement while being knocked back
+            return; 
         }
 
         if (currentTarget == null)
@@ -58,7 +52,6 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        // Normal rotation & movement
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         direction.y = 0;
 
@@ -67,7 +60,6 @@ public class EnemyAI : MonoBehaviour
             Quaternion targetRot = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
 
-            // Move forward relative to current facing direction
             rb.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime);
         }
 
@@ -125,8 +117,8 @@ public class EnemyAI : MonoBehaviour
         if (applyKnockback && attacker != null && rb != null)
         {
             Vector3 knockDir = (transform.position - attacker.position).normalized;
-            knockDir.y = 0; // horizontal only
-            rb.linearVelocity = Vector3.zero; // reset current movement
+            knockDir.y = 0; 
+            rb.linearVelocity = Vector3.zero; 
             rb.AddForce(knockDir * knockbackForce, ForceMode.Impulse);
             isKnockback = true;
         }

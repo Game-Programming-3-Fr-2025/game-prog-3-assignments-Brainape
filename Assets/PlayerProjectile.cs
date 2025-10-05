@@ -15,21 +15,17 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // ignore hitting the owner
         if (owner != null && other.transform == owner) return;
 
-        // Prefer enemy-specific logic (so they can aggro)
         var enemy = other.GetComponent<EnemyAI>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage, owner, true); // true = apply knockback
-            //FeedbacksManager.Instance.Play("ImpactFeedback", transform.position);
+            enemy.TakeDamage(damage, owner, true); 
 
             Destroy(gameObject);
             return;
         }
 
-        // Otherwise fallback to Health component
         var health = other.GetComponent<Health>();
         if (health != null)
         {
@@ -44,7 +40,6 @@ public class PlayerProjectile : MonoBehaviour
           
             return;
         }
-        // If it hits anything else (walls), destroy
         Destroy(gameObject);
     }
 }

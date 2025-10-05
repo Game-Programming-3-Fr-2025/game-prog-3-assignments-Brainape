@@ -3,12 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
-    [Header("Teleport Settings")]
     public Transform player;           
     public Transform targetPosition;   
     public float teleportInterval = 10f; 
     public TextMeshProUGUI textMeshPro;
-    [Header("Timer Info (read-only)")]
     public float timeLeft;             
 
     private void Start()
@@ -38,9 +36,6 @@ public class GameController : MonoBehaviour
         {
             player.position = targetPosition.position;
         }
-        else
-        {
-            Debug.LogWarning("Player or TargetPosition not assigned in GameController!");
-        }
+      
     }
 }

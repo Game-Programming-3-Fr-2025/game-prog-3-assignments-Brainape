@@ -13,7 +13,6 @@ public class FeedbacksManager : MonoBehaviour
         public MMF_Player player;
     }
 
-    [Header("Registered Feedbacks")]
     [SerializeField] private List<NamedFeedback> feedbacks = new List<NamedFeedback>();
 
     private Dictionary<string, MMF_Player> _lookup;
@@ -28,7 +27,6 @@ public class FeedbacksManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // build lookup table for fast access
         _lookup = new Dictionary<string, MMF_Player>();
         foreach (var f in feedbacks)
         {
@@ -41,7 +39,6 @@ public class FeedbacksManager : MonoBehaviour
     {
         if (_lookup.TryGetValue(id, out var player))
         {
-            // move the player if it's not prefab-local
             player.transform.position = position;
             player.PlayFeedbacks();
         }
