@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public float teleportInterval = 10f; 
     public TextMeshProUGUI textMeshPro;
     public float timeLeft;             
-
+    public Animator anim;
     private void Start()
     {
         timeLeft = teleportInterval;
@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
 
     void TeleportPlayer()
     {
+        anim.Play("flash");
         if (player != null && targetPosition != null)
         {
             player.position = targetPosition.position;

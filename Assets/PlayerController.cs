@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private int jumpCount = 0;
     private int maxJumps = 1;
-    public PlatformShooter platformShooter; 
-
+    public PlatformShooter platformShooter;
+    public Animator anim;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             && jumpCount < maxJumps)
         {
             Vector2 jumpDirection = rb.gravityScale > 0 ? Vector2.up : Vector2.down;
-
+            anim.Play("jump");
             rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
             lastJumpTime = Time.time;
             jumpCount++;
@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = topGravity;
             jumpCount = 0;
+            anim.Play("land");
+
         }
         else if (collision.collider.CompareTag("Bottom"))
         {
@@ -69,7 +71,10 @@ public class PlayerController : MonoBehaviour
         else if (collision.collider.CompareTag("Death"))
         {
             Respawn();
+            ScreenShake2D.Instance.Shake(0.5f, 0.3f);
         }
+
+
     }
 
     void Respawn()
@@ -89,6 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             if (platformShooter != null)
             {
+                CameraZoom2D.Instance.Zoom();
                 platformShooter.AddAmmo(2); 
             }
             Destroy(other.gameObject); 
